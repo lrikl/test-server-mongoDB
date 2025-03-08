@@ -2,21 +2,6 @@
 
 import "./style.css";
 
-// document.querySelector('.add-btn').addEventListener('click', async () => {
-//     const newUser = {
-//         name: 'Jack (' + Date.now() + ')',
-//         age: 25,
-//         email: `qwerty${Date.now()}@gmail.com`
-//     };
-
-//     const response = await fetch('/users', {
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//         body: JSON.stringify(newUser)
-//     })
-// });
-
-
 const form = document.querySelector('.form');
 
 const verificationsRegEx = {
@@ -63,7 +48,7 @@ form.addEventListener('submit', event => {
               });
             })
             .catch(error => {
-                console.error('Ошибка:', error.message);
+                console.error('Помилка:', error.message);
             
                 if (error.message.includes('email')) {
                   alert('Цей e-mail вже використовується!');

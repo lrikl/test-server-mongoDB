@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #fff;
     color: #B3B3BA;
-    padding: 48px;
+    padding: clamp(16px, 4vw, 48px);
     margin: 0;
     line-height: 1.2;
     font-size: 14px;
@@ -29,9 +29,10 @@ h2, h3 {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 32px;
+    padding: clamp(16px, 3vw, 32px);
     background-color: #F5F5FA;
-    width: 520px;
+    max-width: 520px;
+    width: 100%;
     border-radius: 16px;
 }
 
