@@ -6,7 +6,6 @@ import User from './users.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 let dbUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/test-mongo-users';
 if (dbUrl.startsWith('"')) {
     dbUrl = dbUrl.slice(1, -1);
