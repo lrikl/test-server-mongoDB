@@ -4,7 +4,11 @@ const { Schema, model } = mongoose;
 
 const userSchema = new Schema ({
     name: String,
-    age: Number,
+    message: String,
+    phone: {
+        type: Number,
+        unique: true
+    },
     email: {
         type: String,
         unique: true

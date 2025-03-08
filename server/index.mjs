@@ -39,19 +39,33 @@ app.get('/users', async (req, res) => {
 
 app.post('/users', async (req, res) => {
     try {
-        const { name, age, email } = req.body;
-        const newUser = new User({
-            name,
-            age,
-            email
+        const { name, phone, email, message } = req.body;
+
+        const existingUser = await User.findOne({
+            $or: [{ email }, { phone }]
         });
+
+        if (existingUser) {
+            return res.status(400).json({
+                error: `Помилка: ${
+                    existingUser.email === email ? 'email' : 'phone'
+                } вже використовується!`
+            });
+        }
+
+        const newUser = new User({ name, phone, email, message });
         const userDB = await newUser.save();
+        
         console.log('User is added', userDB.id);
-        res.send({id:userDB.id, message: name + ' is added'});
-    }
-    catch (error) {
-        console.log('Error adding a user', error);
-        res.status(500).send('Error addinga user');
+        res.status(201).json({ id: userDB.id, message: `${name} доданий!` });
+
+    } catch (error) {
+        if (error.code === 11000) {
+            const field = Object.keys(error.keyValue)[0]; 
+            return res.status(400).json({ error: `Помилка: ${field} вже використовується!` });
+        }
+
+        res.status(500).json({ error: 'Помилка сервера' });
     }
 });
 

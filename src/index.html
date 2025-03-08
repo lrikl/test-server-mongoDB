@@ -6,8 +6,25 @@
     <title>server + mongo</title>
 </head>
 <body>
-    <div class="add-btn">Add User</div>
-    <div class="msg-box">View Users</div>
+
+    <div class="form-wrap">
+        <form class="form">
+            <h2 class="form-title">Ми хотіли б Вам допомогти</h2>
+            
+            <input id="name" class="form-input" type="text" name="name" placeholder="Введіть ваше ім’я">
+            <textarea id="message" class="form-input form-message" name="message" placeholder="Повідомлення"></textarea>
+            
+            <h3 class="form-subtitle">Як вам відповісти?</h3>
+
+            <input id="phone" class="form-input" type="tel" name="phone" placeholder="Номер телефону">
+            <input id="email" class="form-input" type="email" name="email" placeholder="Email">
+            
+            <button class="form-button" type="submit">Надіслати запит</button>
+        </form>
+    </div>
+
+    <div class="msg-box">показати юзерів із бази</div>
     <ul class="users-list"></ul>
+
 </body>
 </html>
